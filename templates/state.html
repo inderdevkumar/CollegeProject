@@ -49,29 +49,25 @@
 
 <body>
     <header>
+        
+
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="{% url 'state' %}"><b>Inderdev Kumar Yadav</b></a>
-            <form action="{% url 'state' %}" method="GET" value="{{request.GET.q}}">
-                <input type="text" name="q" value="{{request.GET.q}}" placeholder="Search for State"/>
+            <form action="" method="GET" value="{{request.GET.q}}">
+                <input type="text" size="50" name="q" value="{{request.GET.q}}" placeholder="Search for State..."/>
                 <input type="submit" name="submit" value="Search"/>
-            </form>
-            <br/>
-            <hr/>
-            <br/>
-            
-             
+            </form>   
         </nav>
-
         {% if submitbutton == 'Search' and request.GET.q != '' %}
             {% if results %}
-            <h1>Results for <b>{{ request.GET.q }}</b></h1>
-            <br/><br/>
+            <p>Colleges in <b>{{ request.GET.q }}</b> states are as below: </p>
+            
             {% for result in results %}
-        <a href="{% url 'detail' result.id %}">{{result.name}}</a>
-        
-        
-        {{result.content}}
-        <br/>
+        <a href="{% url 'detail' result.id %}">
+            <ul>
+                <li>{{result.name}}</li>
+            </ul>   
+        </a>
         {% endfor %}
             
             {% else %}
@@ -83,30 +79,28 @@
         
         <br/><br/>
 
-        
+       
 
     </header>
-    <h1 class="text-center">State and Union Territory</h1>
-            <hr />
 
-    {% for statename in state_list.all %}
-            
-            <a href="{% url 'collegeList' %}">
-                <h3>{{statename.state}}</h3>
-            </a>
-            
-            {% endfor %}
+    {% for statename in state_list.all %}           
+                <ul>
+                    <li>{{statename.state}}</li>
+                </ul>           
+    {% endfor %}
 
+
+    <div class="p-3 mb-2 bg-secondary text-white">    
+        <footer>
+          <div class="container text-center" >
+              <p >CopyRight, Inderdev Kumar {% now "Y"%}</p>
+              
+              <p>Contact information: <a href="mailto:indra0102thetiger@gmail.com">mail me</a>.</p>
+          </div>
+      </footer>
+      </div> 
+      
     
-
-    <footer class="text-muted">
-        <div class="container text-center">
-            <p >CopyRight, Inderdev Kumar {% now "Y"%}</p>
-        </div>
-    </footer>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"
-        integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm"
-        crossorigin="anonymous"></script>
 </body>
 
 </html>
