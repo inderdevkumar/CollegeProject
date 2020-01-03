@@ -1,13 +1,17 @@
 
+
         <h1 class="text-center">List of colleges</h1>
         <hr/>
-        <div class="row">
-            {% for state in list.all %}
-            <div class="col-sm-12">
-            <a href="{% url 'detail' state.id %}"><h3>{{state.name}}</h3></a>
-            </div>
+        
+            
+            {% for college in list.all %}
+            
+            
+
+            <a href="{% url 'detail' college.id %}"><h3>{{college.name}}</h3></a>
+            
             {% endfor %}
-        </div>
+        
             
 
             

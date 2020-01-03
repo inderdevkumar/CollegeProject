@@ -14,6 +14,8 @@ class colleges(models.Model):
     placed= models.PositiveIntegerField()
     image= models.ImageField(upload_to='images/')
     review= models.CharField(max_length=200)
+    
 
     def __str__(self):  # This is used to display name as title in admin page  without this it will be looking like : Blog object (4)
         return self.name
+

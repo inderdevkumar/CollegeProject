@@ -17,14 +17,14 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings  # for getting image
 from django.conf.urls.static import static  # for getting image
-import state_list.views
+#import state_list.views
 import core.views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', state_list.views.state, name='state'),
-    path('search/', include('state_list.urls')),
-    path('college/', include('core.urls')),
+    #path('', core.views.state, name='state'),
+    
+    path('', include('core.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # for getting image
 
